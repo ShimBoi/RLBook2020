@@ -76,7 +76,7 @@ class Policy:
         state.value = self.td_update(state.value, new_state.value)
         self.curr = new_state
 
-        print(f"📈 TD UPDATE: {old_value:.3f} -> {state.value:.3f}")
+        print(f"TD UPDATE: {old_value:.3f} -> {state.value:.3f}")
 
     def get_best_move(self, board, player):
         state = self.find_current_state(board, player)
@@ -89,7 +89,7 @@ class Policy:
 
         if np.random.rand() < self.epsilon:
             random_move = list(state.children.keys())[np.random.randint(len(state.children))]
-            print(f"🎲 RANDOM MOVE SELECTED: {random_move} (ε={self.epsilon:.3f})")
+            print(f"RANDOM MOVE SELECTED: {random_move} (ε={self.epsilon:.3f})")
             self.curr = state.children[random_move]
             return random_move
         else:
@@ -108,7 +108,7 @@ class Policy:
                         best_value = child.value
                         best_move = move
 
-            print(f"🎯 BEST MOVE SELECTED PLAYER {player}: {best_move} (value: {best_value:.3f})")
+            print(f"BEST MOVE SELECTED PLAYER {player}: {best_move} (value: {best_value:.3f})")
 
             # perform TD update
             next_state = state.children[best_move]
